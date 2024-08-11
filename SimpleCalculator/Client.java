@@ -43,10 +43,12 @@ public class Client {
                         System.out.println("Response: " + obj.popValue());
                         break;
                     case 4:
-                        System.out.println("Thursday");
+                        System.out.println("Response: " + obj.isEmpty());
                         break;
                     case 5:
-                        System.out.println("Friday");
+                        System.out.println("Enter the seconds you want to delay: ");
+                        int seconds = sc.nextInt();
+                        System.out.println("Response: " + obj.delayPop(seconds));
                         break;
                     default:
                         System.out.println("Invalid day number. Please enter a number between 1 and 7.");
