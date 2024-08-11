@@ -3,7 +3,8 @@
 1. Understanding my code
    I have used 4 files.
    a. SimpleCalculator.java
-      Purpose: This file defines the SimpleCalculator remote interface, which declares the methods that can be invoked remotely                by clients.
+      Purpose: This file defines the SimpleCalculator remote interface, which declares the methods that can be invoked 
+               remotely by clients.
    
    b. SimpleCalculatorImpl.java
       Purpose: This file provides the implementation of the SimpleCalculator interface.
@@ -28,26 +29,24 @@
             checking if the stack is empty, and delaying the pop operation.
 
 2. Detailed Breakdown
-Remote Object Lookup: The client first looks up the remote object SimpleCalculator using Naming.lookup("rmi://localhost/Server"). This allows the client to interact with the remote calculator service.
+   Remote Object Lookup: The client first looks up the remote object SimpleCalculator using  
+   Naming.lookup("rmi://localhost/Server"). This allows the client to interact with the remote calculator service.
 
-User Input Handling: A Scanner object is created to read input from the user.
-The while (true) loop keeps the program running, allowing continuous interaction with the user until the program is terminated manually.
+   pushValue: Handles inserting values into the stack.
+   pushOperation: Handles performing operations on the stack (max, min, gcd, lcm).
+   popValue: Pops the topmost value from the stack and prints the result.
+   isEmpty: Checks if the stack is empty and prints the result.
+   delayPop: Handles popping an element after a specified delay.
 
-Displaying Menu Options: The program displays a menu with options for various operations (insert value, perform operations, pop value, check stack status, delay pop).
-
-  pushValue: Handles inserting values into the stack.
-  pushOperation: Handles performing operations on the stack (max, min, gcd, lcm).
-  popValue: Pops the topmost value from the stack and prints the result.
-  isEmpty: Checks if the stack is empty and prints the result.
-  delayPop: Handles popping an element after a specified delay.
-
-Exception Handling: The try-catch block catches and prints any exceptions that occur during RMI operations or user input processing.
+   Exception Handling: The try-catch block catches and prints any exceptions that occur during RMI operations or user input 
+   processing.
 
 3. Intructions to test
    1. Compile the SimpleCalculatorImpl.java file
    2. Compile the Server.java file
    3. Compile the Client.java file
-   4. Run the Server (It creates the rmi registry at port 1099, please do not run `start rmiregistry` command to start the registry)
+   4. Run the Server (It creates the rmi registry at port 1099, please do not run `start rmiregistry` command to start the 
+      registry)
    5. Run the Client
 
 4. Individual Stack
