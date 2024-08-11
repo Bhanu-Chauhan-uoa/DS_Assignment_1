@@ -52,4 +52,5 @@ Exception Handling: The try-catch block catches and prints any exceptions that o
 
 4. Individual Stack
    Please note that I have implemented the individual stack for each of the user.
+   I have used Hashmaps for implementing this functionality.
 
