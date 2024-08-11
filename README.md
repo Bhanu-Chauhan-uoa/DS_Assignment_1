@@ -46,4 +46,14 @@ Switch Case for User Input:
           method delayPop(int ms) is called.
   default: Catches any invalid input and prompts the user to enter a valid option.
 
-Exception Handling: The try-catch block catches and prints any exceptions that occur during RMI operations or user input processing.   
+Exception Handling: The try-catch block catches and prints any exceptions that occur during RMI operations or user input processing.
+
+3. Intructions to test
+   1. Compile the SimpleCalculatorImpl.java file
+   2. Compile the Server.java file
+   3. Compile the Client.java file
+   4. Run the Server (It creates the rmi registry at port 1099, please do not run `start rmiregistry` command to start the registry)
+   5. Run the Client
+
+Note: Since all of the clients are using the common stack, when a user performs an operation, the stack is left with only one single value for the other user.
+
