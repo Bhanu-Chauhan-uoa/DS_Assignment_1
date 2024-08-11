@@ -2,22 +2,26 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Stack;
 import java.lang.Thread;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SimpleCalculatorImpl extends UnicastRemoteObject implements SimpleCalculator {
     protected SimpleCalculatorImpl() throws RemoteException {
         super();
     }
-    Stack<Integer> stack = new Stack<Integer>();
+//    Stack<Integer> stack = new Stack<Integer>();
+    private final Map<String, Stack<Integer>> clientStacks = new HashMap<>();
 
     @Override
-    public synchronized String pushValue(int val) throws RemoteException {
+    public synchronized String pushValue(String clientName, int val) throws RemoteException {
+        Stack<Integer> stack = getClientStack(clientName);
         stack.push(val);
         return "Successfully Pushed " + val;
     }
 
 //    implementing the logic for pushOperation
-    public synchronized int pushOperation(String operation) throws RemoteException {
-
+    public synchronized int pushOperation(String clientName, String operation) throws RemoteException {
+        Stack<Integer> stack = getClientStack(clientName);
 //        for finding the max
         if(operation.equals("max")){
             if(stack.isEmpty()){
@@ -76,17 +80,20 @@ public class SimpleCalculatorImpl extends UnicastRemoteObject implements SimpleC
     }
 
 //    Implementation for popping the top most element in the stack
-    public synchronized int popValue() throws RemoteException {
+    public synchronized int popValue(String clientName) throws RemoteException {
+        Stack<Integer> stack = getClientStack(clientName);
         return stack.pop();
     }
 
 //    Implementation to check if the stack is empty
-    public synchronized boolean isEmpty() throws RemoteException {
+    public synchronized boolean isEmpty(String clientName) throws RemoteException {
+        Stack<Integer> stack = getClientStack(clientName);
         return stack.empty();
     }
 
 //    Implementation to delay pop function
-    public synchronized int delayPop(int s) throws RemoteException{
+    public synchronized int delayPop(String clientName, int s) throws RemoteException{
+        Stack<Integer> stack = getClientStack(clientName);
         try {
             Thread.sleep(s*1000); // Sleep for the given seconds
         } catch (InterruptedException e) {
@@ -112,5 +119,10 @@ public class SimpleCalculatorImpl extends UnicastRemoteObject implements SimpleC
     //    function to calculate lcm
     public static int lcm(int a, int b) throws RemoteException {
         return (a*b)/gcd(a,b);
+    }
+
+//    function to get the user stack
+    private Stack<Integer> getClientStack(String clientName) {
+        return clientStacks.computeIfAbsent(clientName, k -> new Stack<>());
     }
 }
