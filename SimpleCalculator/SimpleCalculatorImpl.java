@@ -10,13 +10,13 @@ public class SimpleCalculatorImpl extends UnicastRemoteObject implements SimpleC
     Stack<Integer> stack = new Stack<Integer>();
 
     @Override
-    public String pushValue(int val) throws RemoteException {
+    public synchronized String pushValue(int val) throws RemoteException {
         stack.push(val);
         return "Successfully Pushed " + val;
     }
 
 //    implementing the logic for pushOperation
-    public int pushOperation(String operation) throws RemoteException {
+    public synchronized int pushOperation(String operation) throws RemoteException {
 
 //        for finding the max
         if(operation.equals("max")){
@@ -76,17 +76,17 @@ public class SimpleCalculatorImpl extends UnicastRemoteObject implements SimpleC
     }
 
 //    Implementation for popping the top most element in the stack
-    public int popValue() throws RemoteException {
+    public synchronized int popValue() throws RemoteException {
         return stack.pop();
     }
 
 //    Implementation to check if the stack is empty
-    public boolean isEmpty() throws RemoteException {
+    public synchronized boolean isEmpty() throws RemoteException {
         return stack.empty();
     }
 
 //    Implementation to delay pop function
-    public int delayPop(int s) throws RemoteException{
+    public synchronized int delayPop(int s) throws RemoteException{
         try {
             Thread.sleep(s*1000); // Sleep for the given seconds
         } catch (InterruptedException e) {

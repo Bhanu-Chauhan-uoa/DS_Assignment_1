@@ -7,12 +7,11 @@ public class Client {
             // Get the remote object
             SimpleCalculator obj = (SimpleCalculator) Naming.lookup("rmi://localhost/Server");
 
-            // Call the remote method
             Scanner sc = new Scanner(System.in);
 
             while(true){
-                System.out.println("Enter 1 to insert an element");
-                System.out.println("Enter 2 to insert an perform operations");
+                System.out.println("Enter 1 to push an element");
+                System.out.println("Enter 2 to push an operation");
                 System.out.println("Enter 3 to pop an element");
                 System.out.println("Enter 4 to check if the stack is empty");
                 System.out.println("Enter 5 to pop an element after a delay");
@@ -51,7 +50,7 @@ public class Client {
                         System.out.println("Response: " + obj.delayPop(seconds));
                         break;
                     default:
-                        System.out.println("Invalid day number. Please enter a number between 1 and 7.");
+                        System.out.println("Invalid day number. Please enter a number between 1 and 5.");
                         break;
                 }
             }
