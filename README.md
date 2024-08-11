@@ -35,16 +35,11 @@ The while (true) loop keeps the program running, allowing continuous interaction
 
 Displaying Menu Options: The program displays a menu with options for various operations (insert value, perform operations, pop value, check stack status, delay pop).
 
-Switch Case for User Input:
-  case 1: Handles inserting values into the stack. It uses a nested while (true) loop to allow continuous insertion of 
-          values until the user decides to stop.
-  case 2: Handles performing operations on the stack (max, min, gcd, lcm). The user is prompted to enter the operation, and 
-          the corresponding remote method is called.
-  case 3: Pops the topmost value from the stack and prints the result.
-  case 4: Checks if the stack is empty and prints the result.
-  case 5: Handles popping an element after a specified delay. The user is prompted to enter the delay time, and the remote 
-          method delayPop(int ms) is called.
-  default: Catches any invalid input and prompts the user to enter a valid option.
+  pushValue: Handles inserting values into the stack.
+  pushOperation: Handles performing operations on the stack (max, min, gcd, lcm).
+  popValue: Pops the topmost value from the stack and prints the result.
+  isEmpty: Checks if the stack is empty and prints the result.
+  delayPop: Handles popping an element after a specified delay.
 
 Exception Handling: The try-catch block catches and prints any exceptions that occur during RMI operations or user input processing.
 
@@ -55,5 +50,6 @@ Exception Handling: The try-catch block catches and prints any exceptions that o
    4. Run the Server (It creates the rmi registry at port 1099, please do not run `start rmiregistry` command to start the registry)
    5. Run the Client
 
-Note: Since all of the clients are using the common stack, when a user performs an operation, the stack is left with only one single value for the other user.
+4. Individual Stack
+   Please note that I have implemented the individual stack for each of the user.
 
